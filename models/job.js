@@ -10,7 +10,7 @@ const jobSchema = new mongoose.Schema({
     },
     date: {
         type: Date,
-        default: new Date.now()
+        default: Date.now()
     },
     status: {
         type: String,
@@ -18,6 +18,10 @@ const jobSchema = new mongoose.Schema({
             values: ["Pending", "Interview", "Regected"],
             message: "{VALUE} you entered is not allowed."
         }
+    },
+    userId: {
+        type: String,
+        required: true
     }
 })
 
