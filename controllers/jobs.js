@@ -1,5 +1,5 @@
 const getAllJobs = async(req, res) => {
-    res.status(200).json({ msg: "All jobs"})
+    res.status(200).json({ msg: `All jobs for user ${req.user.name}`})
 }
 
 const getJobById = async(req, res) => {
