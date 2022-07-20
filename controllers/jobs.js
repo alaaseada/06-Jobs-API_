@@ -1,7 +1,27 @@
-const sayHello = async(req, res) => {
-    res.status(200).json({ msg: "Hello from jobs controller."})
+const getAllJobs = async(req, res) => {
+    res.status(200).json({ msg: "All jobs"})
+}
+
+const getJobById = async(req, res) => {
+    res.status(200).json({ msg: "One job by Id"})
+}
+
+const addJob = async(req, res) => {
+    res.status(200).json({ msg: "Add a job"})
+}
+
+const updateJob = async(req, res) => {
+    res.status(200).json({ msg: "Update a job"})
+}
+
+const deleteJob = async(req, res) => {
+    res.status(200).json({ msg: "Delete a job"})
 }
 
 module.exports = {
-    sayHello
+    getAllJobs,
+    getJobById,
+    addJob,
+    updateJob,
+    deleteJob
 }
