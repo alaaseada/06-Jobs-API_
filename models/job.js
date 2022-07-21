@@ -1,29 +1,30 @@
+const { type } = require("express/lib/response");
 const mongoose = require("mongoose");
 const jobSchema = new mongoose.Schema({
     company: {
         type: String,
-        required: true
+        required: [true, "The company name is required."],
+        maxLength: 50
     },
     position: {
         type: String,
-        required: true
-    },
-    date: {
-        type: Date,
-        default: Date.now()
+        required: [true, "The position is required"],
+        maxLength: 100
     },
     status: {
         type: String,
         enum: {
-            values: ["Pending", "Interview", "Regected"],
-            message: "{VALUE} you entered is not allowed."
-        }
+            values: ["Pending", "Interview", "Rejected"],
+            message: "{VALUE} is invalid"
+        },
+        default: "Pending"
     },
-    userId: {
-        type: String,
-        required: true
+    createdBy: {
+        type: mongoose.Types.ObjectId,
+        ref: "users",
+        required: [true, "The creator is required."]
     }
-})
+}, {timestamps: true})
 
 
 module.exports = mongoose.model('jobs', jobSchema);
